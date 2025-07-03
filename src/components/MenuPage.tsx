@@ -1,4 +1,3 @@
-
 import { ArrowLeft, Home, GraduationCap, Users, Settings as SettingsIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -8,35 +7,35 @@ const MenuPage = () => {
       title: "Academics",
       icon: GraduationCap,
       items: [
-        "Academic & Finances",
-        "Canvas Dashboard",
-        "Advising (Navigate)",
-        "UNT Libraries",
-        "Academic Progress"
+        { label: "Academic & Finances", url: "" },
+        { label: "Canvas Dashboard", url: "" },
+        { label: "Advising (Navigate)", url: "" },
+        { label: "UNT Libraries", url: "" },
+        { label: "Academic Progress", url: "" },
       ]
     },
     {
       title: "Campus Life",
       icon: Users,
       items: [
-        "Student Life",
-        "Dining",
-        "Housing",
-        "Rec Sports",
-        "Athletics",
-        "Campus Map",
-        "Parking & Transit",
-        "TinderU"
+        { label: "Student Life", url: "" },
+        { label: "Dining", url: "" },
+        { label: "Housing", url: "" },
+        { label: "Rec Sports", url: "" },
+        { label: "Athletics", url: "" },
+        { label: "Campus Map", url: "" },
+        { label: "Parking & Transit", url: "" },
+        { label: "TinderU", url: "" },
       ]
     },
     {
       title: "Services",
       icon: SettingsIcon,
       items: [
-        "MyUNT",
-        "Email",
-        "Health & Wellness",
-        "IT Help Desk"
+        { label: "MyUNT", url: "" },
+        { label: "Email", url: "" },
+        { label: "Health & Wellness", url: "" },
+        { label: "IT Help Desk", url: "" },
       ]
     }
   ];
@@ -79,9 +78,10 @@ const MenuPage = () => {
                 <div
                   key={itemIndex}
                   className="flex items-center space-x-3 p-4 hover:bg-gray-50 cursor-pointer transition-colors"
+                  onClick={() => item.url && window.open(`/webview?url=${encodeURIComponent(item.url)}`, "_self")}
                 >
                   <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
-                  <span className="text-gray-700">{item}</span>
+                  <span className="text-gray-700">{item.label}</span>
                 </div>
               ))}
             </div>

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "@/components/HomePage";
@@ -7,6 +6,7 @@ import CalendarPage from "@/components/CalendarPage";
 import FavoritesPage from "@/components/FavoritesPage";
 import SettingsPage from "@/components/SettingsPage";
 import Navigation from "@/components/Navigation";
+import WebViewPage from "@/components/WebViewPage";
 
 const Index = () => {
   return (
@@ -20,6 +20,7 @@ const Index = () => {
               <Route path="/calendar" element={<CalendarPage />} />
               <Route path="/favorites" element={<FavoritesPage />} />
               <Route path="/settings" element={<SettingsPage />} />
+              <Route path="/webview" element={<WebViewPage />} />
             </Routes>
           </div>
           <Navigation />

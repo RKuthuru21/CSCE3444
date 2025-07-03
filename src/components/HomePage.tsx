@@ -1,26 +1,24 @@
-
 import { Calendar, DollarSign, Utensils, Map, Heart, Car, Trophy, Users } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { getEventsForDate } from "@/utils/events";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
   const quickLinks = [
-    { icon: Calendar, label: "Canvas", color: "bg-blue-100 text-blue-600" },
-    { icon: DollarSign, label: "Financial Aid", color: "bg-green-100 text-green-600" },
-    { icon: Utensils, label: "Dining", color: "bg-orange-100 text-orange-600" },
-    { icon: Map, label: "Campus Map", color: "bg-purple-100 text-purple-600" },
-    { icon: Heart, label: "Health", color: "bg-red-100 text-red-600" },
-    { icon: Car, label: "Parking", color: "bg-gray-100 text-gray-600" },
-    { icon: Trophy, label: "Athletics", color: "bg-yellow-100 text-yellow-600" },
-    { icon: Users, label: "Student Life", color: "bg-indigo-100 text-indigo-600" },
+    { icon: Calendar, label: "Canvas", color: "bg-blue-100 text-blue-600", url: "https://unt.instructure.com" },
+    { icon: DollarSign, label: "Financial Aid", color: "bg-green-100 text-green-600", url: "https://financialaid.unt.edu/index.html" },
+    { icon: Utensils, label: "Dining", color: "bg-orange-100 text-orange-600", url: "https://dining.unt.edu/" },
+    { icon: Map, label: "Campus Map", color: "bg-purple-100 text-purple-600", url: "https://linguistics.unt.edu/about-us/unt_campus_parking.pdf" },
+    { icon: Heart, label: "Health", color: "bg-red-100 text-red-600", url: "https://studentaffairs.unt.edu/student-health-and-wellness-center/index.html" },
+    { icon: Car, label: "Parking", color: "bg-gray-100 text-gray-600", url: "https://transportation.unt.edu/parking-on-campus.html" },
+    { icon: Trophy, label: "Athletics", color: "bg-yellow-100 text-yellow-600", url: "https://meangreensports.com/" },
+    { icon: Users, label: "Student Life", color: "bg-indigo-100 text-indigo-600", url: "https://www.unt.edu/student-life.html" },
   ];
 
-  const todaysSchedule = [
-    {
-      code: "CSCE 2610",
-      name: "Computer Science Fundamentals",
-      time: "2:00 PM - 3:20 PM",
-      location: "Discovery Park F104"
-    }
-  ];
+  const today = new Date();
+  const todayStr = today.toISOString().slice(0, 10);
+  const todaysSchedule = getEventsForDate(todayStr);
 
   const campusEvents = [
     {
@@ -56,24 +54,40 @@ const HomePage = () => {
     }
   ];
 
+  // Get user profile
+  const profile = JSON.parse(localStorage.getItem("profile") || "{}");
+  const name = profile.name || "";
+  // Get local day and date
+  const now = new Date();
+  const dayName = now.toLocaleDateString(undefined, { weekday: "long" });
+  const dateStr = now.toLocaleDateString(undefined, { month: "long", day: "numeric" });
+
   return (
     <div className="p-4 space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-slate-700 to-slate-600 rounded-xl p-6 text-white relative overflow-hidden">
-        <div className="flex justify-between items-start mb-4">
-          <div className="bg-slate-800 rounded-full px-3 py-1 text-sm font-semibold">
-            UNT
+      <div className="relative rounded-xl overflow-hidden h-64 mb-6">
+        {/* Background Image */}
+        <img
+          src="/unt-campus.jpg"
+          alt="UNT Campus"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 to-slate-700/60 z-10" />
+        {/* Content Overlay */}
+        <div className="relative z-20 h-full flex flex-col justify-between p-6 text-white">
+          <div className="flex justify-between items-start mb-4">
+            <div className="bg-slate-800 rounded-full px-3 py-1 text-sm font-semibold bg-opacity-80">
+              UNT
+            </div>
+            <div className="bg-slate-800 rounded-full p-2 bg-opacity-80">
+              <Users size={16} />
+            </div>
           </div>
-          <div className="bg-slate-800 rounded-full p-2">
-            <Users size={16} />
+          <div>
+            <h1 className="text-xl font-bold">Good {now.getHours() < 12 ? "Morning" : now.getHours() < 18 ? "Afternoon" : "Evening"}, {name}!</h1>
+            <p className="text-sm opacity-90">Today is {dayName}, {dateStr}</p>
           </div>
-        </div>
-        <div className="text-center mb-4">
-          <div className="text-sm opacity-90">UNT Campus Image</div>
-        </div>
-        <div>
-          <h1 className="text-xl font-bold">Good Evening, Rithvik!</h1>
-          <p className="text-sm opacity-90">Today is Monday, June 16</p>
         </div>
       </div>
 
@@ -85,6 +99,7 @@ const HomePage = () => {
             <div
               key={index}
               className="flex flex-col items-center p-3 rounded-xl hover:scale-105 transition-transform cursor-pointer"
+              onClick={() => link.url && navigate(`/webview?url=${encodeURIComponent(link.url)}`)}
             >
               <div className={`p-3 rounded-full ${link.color} mb-2`}>
                 <link.icon size={20} />
@@ -99,15 +114,15 @@ const HomePage = () => {
       <div>
         <h2 className="text-lg font-semibold mb-3">Today's Schedule</h2>
         <div className="bg-white rounded-xl border border-gray-200 p-4">
+          {todaysSchedule.length === 0 && <div className="text-gray-500">No events for today.</div>}
           {todaysSchedule.map((item, index) => (
             <div key={index} className="flex items-start space-x-3">
               <div className="bg-slate-700 rounded p-2">
                 <Calendar size={16} className="text-white" />
               </div>
               <div>
-                <h3 className="font-semibold text-slate-800">{item.code}</h3>
-                <p className="text-sm text-gray-600">{item.name}</p>
-                <p className="text-sm text-gray-500">{item.location}</p>
+                <h3 className="font-semibold text-slate-800">{item.title}</h3>
+                <p className="text-sm text-gray-600">{item.location}</p>
                 <p className="text-sm font-medium text-slate-700">{item.time}</p>
               </div>
             </div>

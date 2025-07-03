@@ -1,47 +1,73 @@
-# CSCE3444
-EagleAccess App
+# Welcome to your Lovable project
 
-# EagleAccess: Campus Resource Hub
+## Project info
 
-## Project Overview
+**URL**: https://lovable.dev/projects/135dedff-4d97-400f-ad77-46e72c2b1e03
 
-EagleAccess is a mobile application developed for the University of North Texas (UNT) to provide students with easy and centralized access to essential campus resources. The goal is to improve the day-to-day college experience by consolidating information on academics, health, dining, transportation, and campus life into a single, efficient platform. This application will help UNT students stay informed, involved, and supported throughout their academic journey.
+## How can I edit this code?
 
-## Core Features
+There are several ways of editing your application.
 
-The application is designed with a range of features to support students' needs:
+**Use Lovable**
 
-* **User Authentication**: Users can register for a new account using their EUID, name, and other personal details, and log in securely.
-* **Centralized Resource Hub**: The home screen provides a tile-based navigation system for easy access to all major resource categories.
-* **Academic Support**: Provides quick links and information for services like Advising, Tutoring, Canvas, and university email.
-* **Social & Campus Life**: Displays information on student organizations, as well as social and sporting events to keep students engaged with the campus community.
-* **Wellness & Safety**: Offers access to resources for physical health, mental health, the campus Rec Center, and general campus safety services.
-* **Food & Dining**: Shows information for UNT dining halls, restaurants within the Student Union, and other local Denton-area restaurants.
-* **Transportation**: Integrates information for the Denton County Transportation Authority (DCTA), the UNT Lyft Pass program, and campus van and shuttle resources.
-* **Search Functionality**: Allows users to search for specific resources using keywords (e.g., "advising").
+Simply visit the [Lovable Project](https://lovable.dev/projects/135dedff-4d97-400f-ad77-46e72c2b1e03) and start prompting.
 
-## Target Audience
+Changes made via Lovable will be committed automatically to this repo.
 
-The primary users of the EagleAccess app are the students and faculty of the University of North Texas (UNT).
+**Use your preferred IDE**
 
-## Technology Stack
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-The project is built using a modern, cross-platform technology stack:
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-* **Primary Language**: JavaScript 
-* **Framework**: React Native, for cross-platform mobile development on Android and iOS.
-* **Backend**: Google Firebase is used for user authentication, database management (Firestore), and handling notifications.
+Follow these steps:
 
-## Project Stakeholders
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
 
-* **Project Approver**: The course professor for CSCE3444.
-* **Product Owner**: The development team, responsible for the project vision and prioritizing features.
-* **Development Team**: The software engineering team responsible for the technical design, implementation, and testing of the application.
-* **End-Users**: UNT Students and Teachers.
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
 
-## Release Plan
+# Step 3: Install the necessary dependencies.
+npm i
 
-The project features are scheduled to be deployed in two main releases:
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
+```
 
-* **Release 1 (R1)**: Includes core functionalities such as Registration, Login, Home Screen, Academic Support, Social & Campus Life, and Wellness & Safety.
-* **Release 2 (R2)**: Includes additional features such as Food & Dining, Transportation, and the Search Function.
+**Edit a file directly in GitHub**
+
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
+
+**Use GitHub Codespaces**
+
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
+
+## What technologies are used for this project?
+
+This project is built with:
+
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
+
+## How can I deploy this project?
+
+Simply open [Lovable](https://lovable.dev/projects/135dedff-4d97-400f-ad77-46e72c2b1e03) and click on Share -> Publish.
+
+## Can I connect a custom domain to my Lovable project?
+
+Yes, you can!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
